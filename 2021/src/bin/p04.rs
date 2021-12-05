@@ -57,7 +57,7 @@ fn main() -> Result<()> {
     for m in moves {
         for b in &mut boards {
             b.mark(m);
-            if b.bingo() && !b.solved {
+            if !b.solved && b.bingo() {
                 b.solved = true;
                 scores.push(b.score() * m);
             }
