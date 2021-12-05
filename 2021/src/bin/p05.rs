@@ -1,7 +1,7 @@
 use anyhow::Result;
-use std::io::{self, BufRead};
-use std::collections::HashMap;
 use regex::Regex;
+use std::collections::HashMap;
+use std::io::{self, BufRead};
 
 struct Line {
     x1: i64,
@@ -26,7 +26,7 @@ fn main() -> Result<()> {
 
             lines.push(line);
         }
-     }
+    }
 
     println!("Part 1: {}", process(&lines, false));
     println!("Part 2: {}", process(&lines, true));
@@ -35,7 +35,7 @@ fn main() -> Result<()> {
 }
 
 fn process(lines: &Vec<Line>, include_diagonals: bool) -> usize {
-    let mut map: HashMap<(i64, i64), i64>  = HashMap::new();
+    let mut map: HashMap<(i64, i64), i64> = HashMap::new();
 
     for line in lines {
         let x_delta = line.x2 - line.x1;
