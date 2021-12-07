@@ -1,15 +1,14 @@
 use anyhow::Result;
 use std::io::{self, Read};
-use std::collections::HashMap;
 
 fn main() -> Result<()> {
     let mut buffer = String::new();
     io::stdin().lock().read_to_string(&mut buffer)?;
 
-    let mut fish: HashMap<u64, u64> = HashMap::new();
+    let mut fish = [0u64; 9];
 
     for n in buffer.trim().split(',') {
-        *fish.entry(n.parse()?).or_insert(0) += 1;
+        fish[n.parse::<usize>()?] += 1;
     }
 
     let p1 = process(&mut fish.clone(), 80);
@@ -21,25 +20,21 @@ fn main() -> Result<()> {
     Ok(())
 }
 
-fn process(fish: &mut HashMap<u64, u64>, days: u64) -> u64 {
+fn process(fish: &mut [u64; 9], days: u64) -> u64 {
     for _ in 0..days {
-        let mut next_fish: HashMap<u64, u64> = HashMap::new();
+        let mut next_fish = [0u64; 9];
 
         for i in 0..9 {
             if i == 0 {
-                let fish_zero = *fish.get(&0).unwrap_or(&0);
-                // next_fish[6] = fish[0]
-                next_fish.insert(6, fish_zero);
-                //next_fish[8] = fish[0]
-                next_fish.insert(8, fish_zero);
+                next_fish[6] = fish[0];
+                next_fish[8] = fish[0];
             } else {
-                // next_fish[i - 1] += fish[i]
-                *next_fish.entry(i - 1).or_insert(0) += fish.get(&i).unwrap_or(&0);
+                next_fish[i - 1] += fish[i];
             }
         }
 
         *fish = next_fish;
     }
 
-    fish.values().sum()
+    fish.iter().sum()
 }
