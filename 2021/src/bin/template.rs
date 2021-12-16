@@ -3,6 +3,12 @@ use anyhow::Result;
 fn main() -> Result<()> {
     println!("Advent of Code 2021!");
 
+    /* read input into String
+    use std::io::{self, Read};
+    let mut buffer = String::new();
+    io::stdin().lock().read_to_string(&mut buffer)?;
+    */
+
     /* process stdin as lines
     use std::io::{self, BufRead};
     for line in io::stdin().lock().lines() {
