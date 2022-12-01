@@ -3,13 +3,14 @@ use std::io::{self, BufRead};
 
 fn main() -> Result<()> {
     let mut elves = vec![0u64];
+    let mut last = 0;
 
     for line in io::stdin().lock().lines() {
         if let Ok(n) = line?.parse::<u64>() {
-            let idx = elves.len() - 1;
-            elves[idx] += n;
+            elves[last] += n;
         } else {
-            elves.push(0)
+            elves.push(0);
+            last += 1;
         }
     }
 
