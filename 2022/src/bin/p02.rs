@@ -1,24 +1,24 @@
 use anyhow::Result;
 use std::io::{self, BufRead};
 
-const ROCK: i64 = 0;
-const PAPER: i64 = 1;
-const SCISSORS: i64 = 2;
-const MOD: i64 = 3;
+const ROCK: u64 = 0;
+const PAPER: u64 = 1;
+const SCISSORS: u64 = 2;
+const MOD: u64 = 3;
 
-const LOSE: i64 = 0;
-const DRAW: i64 = 1;
-const WIN: i64 = 2;
+const LOSE: u64 = 0;
+const DRAW: u64 = 1;
+const WIN: u64 = 2;
 
-fn winner(h: i64) -> i64 {
+fn winner(h: u64) -> u64 {
     (h + 1) % MOD
 }
 
-fn loser(h: i64) -> i64 {
+fn loser(h: u64) -> u64 {
     (h + 2) % MOD
 }
 
-fn score(mut game: (i64, i64), part2: bool) -> i64 {
+fn score(mut game: (u64, u64), part2: bool) -> u64 {
     if part2 {
         match game.1 {
             LOSE => game.1 = loser(game.0),
@@ -37,7 +37,7 @@ fn score(mut game: (i64, i64), part2: bool) -> i64 {
     }
 }
 
-fn map_rps(hand: char) -> i64 {
+fn map_rps(hand: char) -> u64 {
     match hand {
         'A' | 'X' => ROCK,
         'B' | 'Y' => PAPER,
@@ -57,12 +57,12 @@ fn main() -> Result<()> {
 
     println!(
         "Part 1: {}",
-        games.iter().map(|&g| score(g, false)).sum::<i64>()
+        games.iter().map(|&g| score(g, false)).sum::<u64>()
     );
 
     println!(
         "Part 2: {}",
-        games.iter().map(|&g| score(g, true)).sum::<i64>()
+        games.iter().map(|&g| score(g, true)).sum::<u64>()
     );
 
     Ok(())
