@@ -1,7 +1,7 @@
 use anyhow::Result;
 
 fn main() -> Result<()> {
-    println!("Advent of Code 2021!");
+    println!("Advent of Code 2022!");
 
     /* read input into String
     use std::io::{self, Read};
