@@ -35,9 +35,7 @@ fn process(stacks: &mut Vec<Vec<char>>, moves: &[(usize, usize, usize)], part2: 
             temp.reverse();
         }
 
-        for c in temp {
-            stacks[t - 1].push(c);
-        }
+        stacks[t - 1].append(&mut temp);
     }
 
     stacks.iter().filter_map(|s| s.last()).collect()
