@@ -1,4 +1,4 @@
-use anyhow::Result;
+use anyhow::{anyhow, Result};
 use std::collections::HashSet;
 use std::io::{self, BufRead};
 
@@ -18,14 +18,9 @@ fn main() -> Result<()> {
         let line = line?;
 
         let tokens: Vec<_> = line.split(" ").collect();
+        let d = tokens[0].chars().next().ok_or(anyhow!("parse error"))?;
         let n = tokens[1].parse::<i64>()?;
-        match tokens[0] {
-            "L" => moves.push(('L', n)),
-            "R" => moves.push(('R', n)),
-            "U" => moves.push(('U', n)),
-            "D" => moves.push(('D', n)),
-            _ => unreachable!(),
-        }
+        moves.push((d, n));
     }
 
     println!("Part 1: {}", process(&moves, 1));
