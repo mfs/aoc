@@ -1,4 +1,4 @@
-use anyhow::Result;
+use anyhow::{anyhow, Result};
 use std::collections::HashMap;
 use std::io::{self, BufRead};
 
@@ -29,7 +29,12 @@ fn main() -> Result<()> {
         }
     }
 
-    let floor = *grid.keys().map(|(_, y)| y).max().unwrap() + 2;
+    let floor = *grid
+        .keys()
+        .map(|(_, y)| y)
+        .max()
+        .ok_or(anyhow!("empty grid"))?
+        + 2;
 
     // part 1
     let mut part1 = 0;
