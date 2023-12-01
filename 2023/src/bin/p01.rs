@@ -1,4 +1,4 @@
-use anyhow::Result;
+use anyhow::{anyhow, Result};
 use std::io::{self, BufRead};
 
 fn main() -> Result<()> {
@@ -11,8 +11,8 @@ fn main() -> Result<()> {
 
     for line in io::stdin().lock().lines() {
         let line = line?;
-        part1 += value(&line, numbers, false);
-        part2 += value(&line, numbers, true);
+        part1 += value(&line, numbers, false)?;
+        part2 += value(&line, numbers, true)?;
     }
 
     println!("Part 1: {}", part1);
@@ -21,27 +21,21 @@ fn main() -> Result<()> {
     Ok(())
 }
 
-fn value(s: &str, numbers: [&str; 9], part2: bool) -> u32 {
+fn value(s: &str, numbers: [&str; 9], part2: bool) -> Result<u32> {
     let l = s.len();
-    let mut result = 0;
 
-    // find first digit
-    for idx in 0..l {
-        if let Some(left) = digit(&s[idx..], numbers, part2) {
-            result += left * 10;
-            break;
-        }
-    }
+    let left = (0..l)
+        .flat_map(|idx| digit(&s[idx..], numbers, part2))
+        .nth(0)
+        .ok_or(anyhow!("missing digit"))?;
 
-    // find last digit
-    for idx in (0..l).rev() {
-        if let Some(right) = digit(&s[idx..], numbers, part2) {
-            result += right;
-            break;
-        }
-    }
+    let right = (0..l)
+        .rev()
+        .flat_map(|idx| digit(&s[idx..], numbers, part2))
+        .nth(0)
+        .ok_or(anyhow!("missing digit"))?;
 
-    result
+    Ok(left * 10 + right)
 }
 
 fn digit(s: &str, numbers: [&str; 9], part2: bool) -> Option<u32> {
