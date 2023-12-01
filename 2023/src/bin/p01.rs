@@ -26,23 +26,19 @@ fn value(s: &str, numbers: [&str; 9], part2: bool) -> u32 {
     let mut result = 0;
 
     // find first digit
-    let mut idx = 0;
-    loop {
+    for idx in 0..l {
         if let Some(left) = digit(&s[idx..], numbers, part2) {
             result += left * 10;
             break;
         }
-        idx += 1;
     }
 
-    // find second digit
-    let mut idx = l - 1;
-    loop {
+    // find last digit
+    for idx in (0..l).rev() {
         if let Some(right) = digit(&s[idx..], numbers, part2) {
             result += right;
             break;
         }
-        idx -= 1;
     }
 
     result
