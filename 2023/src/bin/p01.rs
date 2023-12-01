@@ -6,25 +6,17 @@ fn main() -> Result<()> {
         "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
     ];
 
-    let mut lines = vec![];
+    let mut part1 = 0;
+    let mut part2 = 0;
 
     for line in io::stdin().lock().lines() {
-        lines.push(line?.to_owned());
+        let line = line?;
+        part1 += value(&line, numbers, false);
+        part2 += value(&line, numbers, true);
     }
 
-    let mut sum = 0;
-    for line in &lines {
-        sum += value(line, numbers, false);
-    }
-
-    println!("Part 1: {}", sum);
-
-    let mut sum = 0;
-    for line in &lines {
-        sum += value(line, numbers, true);
-    }
-
-    println!("Part 2: {}", sum);
+    println!("Part 1: {}", part1);
+    println!("Part 2: {}", part2);
 
     Ok(())
 }
