@@ -1,12 +1,10 @@
 use anyhow::Result;
 use std::io::{self, BufRead};
 
-type Game = Vec<(u32, u32, u32)>;
 type Set = (u32, u32, u32); // RGB
+type Game = Vec<Set>;
 
-const RED_CUBES: u32 = 12;
-const GREEN_CUBES: u32 = 13;
-const BLUE_CUBES: u32 = 14;
+const MAX_CUBES: Set = (12, 13, 14);
 
 fn main() -> Result<()> {
     let mut games = vec![];
@@ -19,7 +17,7 @@ fn main() -> Result<()> {
 
     'outer: for (idx, game) in games.iter().enumerate() {
         for set in game {
-            if set.0 > RED_CUBES || set.1 > GREEN_CUBES || set.2 > BLUE_CUBES {
+            if set.0 > MAX_CUBES.0 || set.1 > MAX_CUBES.1 || set.2 > MAX_CUBES.2 {
                 continue 'outer;
             }
         }
