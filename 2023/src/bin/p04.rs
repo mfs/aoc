@@ -8,7 +8,7 @@ fn main() -> Result<()> {
 
     for line in io::stdin().lock().lines() {
         let line = line?;
-        let tokens: Vec<_> = line.split(|x| x == ':' || x == '|').collect();
+        let tokens: Vec<_> = line.split([':', '|']).collect();
 
         let idx: usize = tokens[0]
             .split_whitespace()
