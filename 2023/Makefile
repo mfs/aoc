@@ -6,6 +6,9 @@ README.md:
 %:
 	cargo run --release --bin $@ < input/$@.txt
 
+%-debug:
+	cargo run --bin $* < input/$*.txt
+
 %-simple:
 	cargo run --release --bin $* < simple.txt
 
