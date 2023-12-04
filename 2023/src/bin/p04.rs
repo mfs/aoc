@@ -28,7 +28,9 @@ fn main() -> Result<()> {
 
         let score = numbers[1].intersection(&numbers[0]).count();
 
-        part1 += 2u32.pow(score as u32 - 1);
+        if score > 0 {
+            part1 += 2u32.pow(score as u32 - 1);
+        }
 
         for i in 1..=score {
             *cards.entry(idx + i).or_insert(1) += 1 * *cards.entry(idx).or_insert(1);
