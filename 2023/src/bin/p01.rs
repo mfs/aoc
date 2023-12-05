@@ -34,6 +34,10 @@ fn value(s: &str, part2: bool) -> Result<u32> {
     Ok(left * 10 + right)
 }
 
+const NUMBERS: [&str; 9] = [
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+];
+
 fn digit(s: &str, part2: bool) -> Option<u32> {
     if let Ok(x) = s[0..1].parse() {
         return Some(x);
@@ -43,11 +47,7 @@ fn digit(s: &str, part2: bool) -> Option<u32> {
         return None;
     }
 
-    let numbers = [
-        "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-    ];
-
-    for (idx, num) in numbers.iter().enumerate() {
+    for (idx, num) in NUMBERS.iter().enumerate() {
         if s.starts_with(num) {
             return Some(idx as u32 + 1);
         }
