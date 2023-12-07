@@ -92,9 +92,7 @@ fn score_type(card: &str, part2: bool) -> u32 {
     };
 
     if part2 {
-        let j_count = card.chars().filter(|&c| c == 'J').count();
-
-        score = match (score, j_count) {
+        score = match (score, counts_map.get(&'J').unwrap_or(&0)) {
             (FOUR_OF_A_KIND, 1 | 4) => FIVE_OF_A_KIND,
             (FULL_HOUSE, 2 | 3) => FIVE_OF_A_KIND,
             (THREE_OF_A_KIND, 1 | 3) => FOUR_OF_A_KIND,
