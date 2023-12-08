@@ -76,9 +76,9 @@ fn main() -> Result<()> {
         }
     }
 
-    let part2 = cycles.into_iter().reduce(|acc, x| lcm(acc, x)).unwrap();
-
-    println!("Part 2: {}", part2);
+    if let Some(part2) = cycles.into_iter().reduce(|acc, x| lcm(acc, x)) {
+        println!("Part 2: {}", part2);
+    }
 
     Ok(())
 }
