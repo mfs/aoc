@@ -22,6 +22,15 @@ const START: char = 'S';
 fn main() -> Result<()> {
     let (mut map, start) = parse()?;
 
+    // patch pipe at start loc by brute forcing each possibility
+    // until one returns the correct number of neighbours
+    for pipe in [NS, EW, NE, NW, SW, SE] {
+        map.grid[start.1][start.0] = pipe;
+        if neighbours(&map, start.0, start.1).len() == 2 {
+            break;
+        }
+    }
+
     let pipes = trace_loop(&map, start);
 
     // might need to handle if path is odd  length
@@ -118,12 +127,11 @@ fn parse() -> Result<(Map, (usize, usize))> {
         grid.push(line?.chars().collect());
     }
 
-    // find start location and patch correct pipe
     let width = grid[0].len();
     let height = grid.len();
     let mut start = (0, 0);
 
-    let mut map = Map {
+    let map = Map {
         grid,
         w: width,
         h: height,
@@ -132,55 +140,9 @@ fn parse() -> Result<(Map, (usize, usize))> {
     for (y, x) in iproduct!(0..height, 0..width) {
         if map.grid[y][x] == START {
             start = (x, y);
-            map.grid[y][x] = patch(&map, x, y);
             break;
         }
     }
 
     Ok((map, start))
-}
-
-fn patch(map: &Map, x: usize, y: usize) -> char {
-    // Some overlap with neighbours() logic
-    let mut neighbours = vec![];
-
-    // North
-    if y > 0 {
-        neighbours.push(Some(map.grid[y - 1][x]));
-    } else {
-        neighbours.push(None);
-    }
-
-    // South
-    if y + 1 < map.h {
-        neighbours.push(Some(map.grid[y + 1][x]));
-    } else {
-        neighbours.push(None);
-    }
-
-    // West
-    if x > 0 {
-        neighbours.push(Some(map.grid[y][x - 1]));
-    } else {
-        neighbours.push(None);
-    }
-
-    // East
-    if x + 1 < map.w {
-        neighbours.push(Some(map.grid[y][x + 1]));
-    } else {
-        neighbours.push(None);
-    }
-
-    // Need test cases for these, only know NE is correct as that is what
-    // my input uses
-    match &neighbours[..] {
-        &[Some(NS | SE | SW), Some(NS | NE | NW), _, _] => NS,
-        &[_, _, Some(EW | NE | SE), Some(EW | NW | SW)] => EW,
-        &[Some(NS | SE | SW), _, _, Some(EW | NW | SW)] => NE,
-        &[Some(NS | SE | SW), _, Some(EW | NE | SE), _] => NW,
-        &[_, Some(NS | NE | NW), _, Some(EW | NW | SW)] => SE,
-        &[_, Some(NS | NE | NW), Some(EW | NE | SE), _] => SW,
-        _ => unreachable!(),
-    }
 }
