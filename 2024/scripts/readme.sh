@@ -7,9 +7,10 @@ echo >> README.md
 
 echo "## Benchmarks" >> README.md
 echo >> README.md
-hyperfine -w 3 target/release/p?? --export-markdown hf.md
+hyperfine -w 3 "target/release/p01 < input/p01.txt" --export-markdown hf.md
 cat hf.md >> README.md
 rm hf.md
+echo >> README.md
 
 echo "## Lines of Code" >> README.md
 echo >> README.md
