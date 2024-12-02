@@ -26,10 +26,8 @@ fn main() -> Result<()> {
 }
 
 fn is_safe_dampener(report: &[i64]) -> bool {
-    if is_safe(report) {
-        return true;
-    }
-
+    // if the original report is safe, it remains safe when removing the first or
+    // last item so we don't need to check the original report
     for i in 0..report.len() {
         let mut r = report.to_vec();
         r.remove(i);
@@ -48,9 +46,5 @@ fn is_safe(report: &[i64]) -> bool {
         return false;
     }
 
-    if deltas.iter().any(|&n| n.abs() > 3) {
-        return false;
-    }
-
-    true
+    deltas.iter().all(|&n| n.abs() <= 3)
 }
