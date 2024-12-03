@@ -8,21 +8,10 @@ fn main() -> Result<()> {
     let mut buffer = String::new();
     io::stdin().lock().read_to_string(&mut buffer)?;
 
-    let re = Regex::new(r"mul\((\d{1,3}),(\d{1,3})\)").unwrap();
-
-    let mut muls: Vec<(u32, u32)> = vec![];
-
-    for c in re.captures_iter(&buffer) {
-        muls.push((c[1].parse()?, c[2].parse()?));
-    }
-
-    let part1: u32 = muls.iter().map(|(x, y)| x * y).sum();
-
-    println!("Part 1: {}", part1);
-
     let re = Regex::new(r"mul\((\d{1,3}),(\d{1,3})\)|do\(\)|don\'t\(\)").unwrap();
 
-    let mut muls: Vec<(u32, u32)> = vec![];
+    let mut part1: u32 = 0;
+    let mut part2: u32 = 0;
     let mut enabled = true;
 
     for c in re.captures_iter(&buffer) {
@@ -30,14 +19,15 @@ fn main() -> Result<()> {
             ("do()", _) => enabled = true,
             ("don't()", _) => enabled = false,
             (_, true) => {
-                muls.push((c[1].parse()?, c[2].parse()?));
+                let product = c[1].parse::<u32>()? * c[2].parse::<u32>()?;
+                part1 += product;
+                part2 += product;
             },
-            (_, false) => {},
+            (_, false) => part1 += c[1].parse::<u32>()? * c[2].parse::<u32>()?,
         }
     }
 
-    let part2: u32 = muls.iter().map(|(x, y)| x * y).sum();
-
+    println!("Part 1: {}", part1);
     println!("Part 2: {}", part2);
 
     Ok(())
