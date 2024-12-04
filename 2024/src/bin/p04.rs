@@ -55,8 +55,8 @@ fn cross(g: &Grid) -> u32 {
 }
 
 fn xmas(g: &Grid) -> u32 {
-    let w = g[0].len();
-    let h = g.len();
+    let w = g[0].len() as i32;
+    let h = g.len() as i32;
 
     let mut count = 0;
 
@@ -64,12 +64,12 @@ fn xmas(g: &Grid) -> u32 {
 
     let grid = |y: i32, x: i32| g[y as usize][x as usize];
 
-    for y in 0..(h as i32) {
-        for x in 0..(w as i32) {
+    for y in 0..h {
+        for x in 0..w {
             for dir in DIRECTIONS {
                 // check end point is in bounds
                 let end = (x + 3 * dir.0, y + 3 * dir.1);
-                if end.0 < 0 || end.0 >= w as i32 || end.1 < 0 || end.1 >= h as i32 {
+                if end.0 < 0 || end.0 >= w || end.1 < 0 || end.1 >= h {
                     continue;
                 }
 
