@@ -6,20 +6,7 @@ use std::str::FromStr;
 use anyhow::Result;
 
 fn main() -> Result<()> {
-    let mut left = vec![];
-    let mut right = vec![];
-
-    for line in io::stdin().lock().lines() {
-        let x: Vec<i64> = line?
-            .split_whitespace()
-            .map(i64::from_str)
-            .collect::<Result<_, _>>()?;
-        left.push(x[0]);
-        right.push(x[1]);
-    }
-
-    left.sort_unstable();
-    right.sort_unstable();
+    let (left, right) = parse()?;
 
     let part1: i64 = zip(&left, &right).map(|(l, r)| (r - l).abs()).sum();
 
@@ -36,4 +23,23 @@ fn main() -> Result<()> {
     println!("Part 2: {}", part2);
 
     Ok(())
+}
+
+fn parse() -> Result<(Vec<i64>, Vec<i64>)> {
+    let mut left = vec![];
+    let mut right = vec![];
+
+    for line in io::stdin().lock().lines() {
+        let x: Vec<i64> = line?
+            .split_whitespace()
+            .map(i64::from_str)
+            .collect::<Result<_, _>>()?;
+        left.push(x[0]);
+        right.push(x[1]);
+    }
+
+    left.sort_unstable();
+    right.sort_unstable();
+
+    Ok((left, right))
 }
