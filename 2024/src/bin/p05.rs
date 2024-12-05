@@ -9,21 +9,7 @@ type Update = Vec<u32>;
 type Updates = Vec<Update>;
 
 fn main() -> Result<()> {
-    let mut rules = Rules::new();
-    let mut updates = Updates::new();
-
-    for line in io::stdin().lock().lines().flatten().filter(|s| !s.is_empty()) {
-        let nums: Vec<_> = line
-            .split(['|', ','])
-            .map(u32::from_str)
-            .collect::<Result<_, _>>()?;
-
-        if line.contains("|") {
-            rules.push((nums[0], nums[1]));
-        } else if line.contains(',') {
-            updates.push(nums);
-        }
-    }
+    let (rules, updates) = parse()?;
 
     let mut part1 = 0;
     let mut part2 = 0;
@@ -77,4 +63,24 @@ fn is_correct(update: &Update, rules: &Rules) -> bool {
     }
 
     true
+}
+
+fn parse() -> Result<(Rules, Updates)> {
+    let mut rules = Rules::new();
+    let mut updates = Updates::new();
+
+    for line in io::stdin().lock().lines().flatten().filter(|s| !s.is_empty()) {
+        let nums: Vec<_> = line
+            .split(['|', ','])
+            .map(u32::from_str)
+            .collect::<Result<_, _>>()?;
+
+        if line.contains("|") {
+            rules.push((nums[0], nums[1]));
+        } else if line.contains(',') {
+            updates.push(nums);
+        }
+    }
+
+    Ok((rules, updates))
 }
