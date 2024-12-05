@@ -12,23 +12,16 @@ fn main() -> Result<()> {
     let mut rules = Rules::new();
     let mut updates = Updates::new();
 
-    for line in io::stdin().lock().lines() {
-        let line = line?;
+    for line in io::stdin().lock().lines().flatten().filter(|s| !s.is_empty()) {
+        let nums: Vec<_> = line
+            .split(['|', ','])
+            .map(u32::from_str)
+            .collect::<Result<_, _>>()?;
 
         if line.contains("|") {
-            let x: Vec<_> = line
-                .split('|')
-                .map(u32::from_str)
-                .collect::<Result<_, _>>()?;
-
-            rules.push((x[0], x[1]));
+            rules.push((nums[0], nums[1]));
         } else if line.contains(',') {
-            let x: Vec<_> = line
-                .split(',')
-                .map(u32::from_str)
-                .collect::<Result<_, _>>()?;
-
-            updates.push(x);
+            updates.push(nums);
         }
     }
 
