@@ -3,16 +3,10 @@ use std::str::FromStr;
 
 use anyhow::Result;
 
-fn main() -> Result<()> {
-    let mut reports = vec![];
+type Reports = Vec<Vec<i64>>;
 
-    for line in io::stdin().lock().lines() {
-        let x: Vec<i64> = line?
-            .split_whitespace()
-            .map(i64::from_str)
-            .collect::<Result<_, _>>()?;
-        reports.push(x);
-    }
+fn main() -> Result<()> {
+    let reports = parse()?;
 
     let part1 = reports.iter().filter(|r| is_safe(r)).count();
 
@@ -47,4 +41,18 @@ fn is_safe(report: &[i64]) -> bool {
     }
 
     deltas.iter().all(|&n| n.abs() <= 3)
+}
+
+fn parse() -> Result<Reports> {
+    let mut reports = vec![];
+
+    for line in io::stdin().lock().lines() {
+        let x: Vec<i64> = line?
+            .split_whitespace()
+            .map(i64::from_str)
+            .collect::<Result<_, _>>()?;
+        reports.push(x);
+    }
+
+    Ok(reports)
 }
