@@ -2,32 +2,28 @@ use std::collections::HashSet;
 use std::io::{self, BufRead};
 
 use anyhow::{anyhow, Result};
+use rayon::prelude::*;
 
 type Grid = Vec<Vec<char>>;
 
 type Dir = (i32, i32);
 
 fn main() -> Result<()> {
-    let (mut grid, start) = parse()?;
+    let (grid, start) = parse()?;
 
     let dir = (0, -1); // up
 
     let path = walk(&grid, start, dir).0.iter().map(|x| x.0).collect::<HashSet<_>>();
     println!("Part 1: {}", path.len());
 
-    let mut count = 0;
-
-    for loc in path.iter().filter(|&&x| x != start) {
+    let part2 = path.par_iter().map(|loc| {
+        let mut grid = grid.clone();
         grid[loc.1 as usize][loc.0 as usize] = '#';
 
-        if walk(&grid, start, dir).1 {
-            count += 1;
-        }
+        walk(&grid, start, dir).1
+    }).filter(|&x| x).count();
 
-        grid[loc.1 as usize][loc.0 as usize] = '.';
-    }
-
-    println!("Part 2: {}", count);
+    println!("Part 2: {}", part2);
 
     Ok(())
 }
