@@ -13,8 +13,10 @@ fn main() -> Result<()> {
 
     let dir = (0, -1); // up
 
-    let path = walk(&grid, start, dir).0.iter().map(|x| x.0).collect::<HashSet<_>>();
+    let mut path = walk(&grid, start, dir).0.iter().map(|x| x.0).collect::<HashSet<_>>();
     println!("Part 1: {}", path.len());
+
+    path.remove(&start); // remove guard start for part 2
 
     let part2 = path.par_iter().map(|loc| {
         let mut grid = grid.clone();
