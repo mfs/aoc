@@ -11,7 +11,7 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 - anyhow
 - regex
 - itertools
-- rayon (using this for the first time this year.  ftw!)
+- rayon (using this for the first time this year. `par_iter` ftw!)
 - num (if big ints are required)
 - rustworkx-core (used once last year)
 
@@ -19,13 +19,13 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
 |:---|---:|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 0.7 ± 0.1 | 0.6 | 1.0 | 1.00 |
-| `target/release/p02 < input/p02.txt` | 1.4 ± 0.6 | 0.9 | 2.5 | 2.02 ± 0.96 |
-| `target/release/p03 < input/p03.txt` | 4.5 ± 0.7 | 3.3 | 5.2 | 6.58 ± 1.43 |
-| `target/release/p04 < input/p04.txt` | 5.5 ± 0.6 | 5.1 | 7.2 | 7.98 ± 1.57 |
-| `target/release/p05 < input/p05.txt` | 30.8 ± 0.4 | 30.4 | 31.6 | 44.73 ± 7.16 |
-| `target/release/p06 < input/p06.txt` | 88.6 ± 1.6 | 87.1 | 92.3 | 128.62 ± 20.67 |
-| `target/release/p07 < input/p07.txt` | 49.3 ± 1.5 | 47.0 | 52.3 | 71.64 ± 11.64 |
+| `target/release/p01 < input/p01.txt` | 2.6 ± 0.1 | 2.5 | 2.8 | 32.47 ± 48.85 |
+| `target/release/p02 < input/p02.txt` | 3.6 ± 0.1 | 3.5 | 3.9 | 45.74 ± 68.80 |
+| `target/release/p03 < input/p03.txt` | 3.5 ± 1.0 | 1.7 | 4.5 | 43.48 ± 66.51 |
+| `target/release/p04 < input/p04.txt` | 0.1 ± 0.1 | 0.0 | 0.4 | 1.00 |
+| `target/release/p05 < input/p05.txt` | 28.2 ± 0.7 | 27.6 | 29.4 | 353.15 ± 531.05 |
+| `target/release/p06 < input/p06.txt` | 88.5 ± 3.3 | 85.6 | 94.3 | 1109.46 ± 1668.70 |
+| `target/release/p07 < input/p07.txt` | 51.9 ± 2.0 | 49.0 | 55.0 | 650.93 ± 979.05 |
 
 ## Lines of Code
 

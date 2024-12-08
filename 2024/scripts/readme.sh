@@ -16,7 +16,7 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 - anyhow
 - regex
 - itertools
-- rayon (using this for the first time this year. `par_iter` ftw!)
+- rayon (using this for the first time this year. \`par_iter\` ftw!)
 - num (if big ints are required)
 - rustworkx-core (used once last year)
 
