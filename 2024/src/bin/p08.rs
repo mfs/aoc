@@ -34,14 +34,16 @@ fn solve(antennas: &Antennas, w: i32, h: i32) -> (usize, usize) {
 }
 
 fn antinodes_part1(pair: &[&V], delta: V, w: i32, h: i32, antinodes: &mut HashSet<V>) {
-   for antenna in pair {
-       for delta in [(delta.0, delta.1), (-delta.0, -delta.1)] {
-           let p = (antenna.0 + delta.0, antenna.1 + delta.1);
-           if p.0 >= 0 && p.0 < w && p.1 >= 0 && p.1 < h && !pair.contains(&&p) {
-               antinodes.insert(p);
-           }
-       }
-   }
+    let nodes = [
+        (pair[0].0 + delta.0, pair[0].1 + delta.1),
+        (pair[1].0 - delta.0, pair[1].1 - delta.1),
+    ];
+
+    for n in &nodes {
+        if n.0 >= 0 && n.0 < w && n.1 >= 0 && n.1 < h {
+            antinodes.insert(*n);
+        }
+    }
 }
 
 fn antinodes_part2(start: V, delta: V, w: i32, h: i32, antinodes: &mut HashSet<V>) {
