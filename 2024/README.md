@@ -1,16 +1,31 @@
 # Advent of Code 2024
 
+These are my solutions for the 2024 Advent of Code. They are written in Rust. Goals are
+readable code, clean algorithms and decent runtimes. Am sub 100ms for all problems so far.
+This probably will not continue...
+
+## Libraries
+
+I tend to rely on minimal external libraries though do have a few standard ones I use.
+
+- anyhow
+- regex
+- itertools
+- rayon (using this for the first time this year.  ftw!)
+- num (if big ints are required)
+- rustworkx-core (used once last year)
+
 ## Benchmarks
 
 | Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
 |:---|---:|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 1.0 ± 0.4 | 0.6 | 1.7 | 1.00 |
-| `target/release/p02 < input/p02.txt` | 2.9 ± 1.2 | 1.1 | 4.3 | 2.83 ± 1.59 |
-| `target/release/p03 < input/p03.txt` | 4.8 ± 0.2 | 4.1 | 5.0 | 4.71 ± 1.68 |
-| `target/release/p04 < input/p04.txt` | 4.7 ± 0.1 | 4.4 | 4.9 | 4.67 ± 1.65 |
-| `target/release/p05 < input/p05.txt` | 27.9 ± 0.5 | 27.4 | 28.8 | 27.55 ± 9.74 |
-| `target/release/p06 < input/p06.txt` | 85.8 ± 1.3 | 85.1 | 89.3 | 84.61 ± 29.91 |
-| `target/release/p07 < input/p07.txt` | 48.2 ± 3.1 | 44.9 | 56.1 | 47.54 ± 17.06 |
+| `target/release/p01 < input/p01.txt` | 0.7 ± 0.1 | 0.6 | 1.0 | 1.00 |
+| `target/release/p02 < input/p02.txt` | 1.4 ± 0.6 | 0.9 | 2.5 | 2.02 ± 0.96 |
+| `target/release/p03 < input/p03.txt` | 4.5 ± 0.7 | 3.3 | 5.2 | 6.58 ± 1.43 |
+| `target/release/p04 < input/p04.txt` | 5.5 ± 0.6 | 5.1 | 7.2 | 7.98 ± 1.57 |
+| `target/release/p05 < input/p05.txt` | 30.8 ± 0.4 | 30.4 | 31.6 | 44.73 ± 7.16 |
+| `target/release/p06 < input/p06.txt` | 88.6 ± 1.6 | 87.1 | 92.3 | 128.62 ± 20.67 |
+| `target/release/p07 < input/p07.txt` | 49.3 ± 1.5 | 47.0 | 52.3 | 71.64 ± 11.64 |
 
 ## Lines of Code
 
