@@ -19,13 +19,13 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
 |:---|---:|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 2.6 ± 0.1 | 2.5 | 2.8 | 32.47 ± 48.85 |
-| `target/release/p02 < input/p02.txt` | 3.6 ± 0.1 | 3.5 | 3.9 | 45.74 ± 68.80 |
-| `target/release/p03 < input/p03.txt` | 3.5 ± 1.0 | 1.7 | 4.5 | 43.48 ± 66.51 |
-| `target/release/p04 < input/p04.txt` | 0.1 ± 0.1 | 0.0 | 0.4 | 1.00 |
-| `target/release/p05 < input/p05.txt` | 28.2 ± 0.7 | 27.6 | 29.4 | 353.15 ± 531.05 |
-| `target/release/p06 < input/p06.txt` | 88.5 ± 3.3 | 85.6 | 94.3 | 1109.46 ± 1668.70 |
-| `target/release/p07 < input/p07.txt` | 51.9 ± 2.0 | 49.0 | 55.0 | 650.93 ± 979.05 |
+| `target/release/p01 < input/p01.txt` | 0.7 ± 0.1 | 0.5 | 1.0 | 1.00 |
+| `target/release/p02 < input/p02.txt` | 3.2 ± 1.3 | 1.2 | 4.7 | 4.28 ± 1.90 |
+| `target/release/p03 < input/p03.txt` | 5.2 ± 0.1 | 5.1 | 5.5 | 7.03 ± 1.25 |
+| `target/release/p04 < input/p04.txt` | 5.2 ± 0.1 | 5.0 | 5.4 | 7.04 ± 1.26 |
+| `target/release/p05 < input/p05.txt` | 30.3 ± 0.9 | 28.6 | 31.2 | 40.68 ± 7.31 |
+| `target/release/p06 < input/p06.txt` | 87.3 ± 1.0 | 86.5 | 89.7 | 117.40 ± 20.83 |
+| `target/release/p07 < input/p07.txt` | 49.2 ± 1.3 | 46.9 | 51.9 | 66.07 ± 11.83 |
 
 ## Lines of Code
 
