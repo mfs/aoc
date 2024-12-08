@@ -34,9 +34,9 @@ fn solve(antennas: &Antennas, w: i32, h: i32) -> (usize, usize) {
 }
 
 fn antinodes_part1(pair: &[&V], delta: V, w: i32, h: i32, antinodes: &mut HashSet<V>) {
-   for p in pair {
+   for antenna in pair {
        for delta in [(delta.0, delta.1), (-delta.0, -delta.1)] {
-           let p = (p.0 + delta.0, p.1 + delta.1);
+           let p = (antenna.0 + delta.0, antenna.1 + delta.1);
            if p.0 >= 0 && p.0 < w && p.1 >= 0 && p.1 < h && !pair.contains(&&p) {
                antinodes.insert(p);
            }
