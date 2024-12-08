@@ -24,9 +24,9 @@ fn solve(antennas: &Antennas, w: i32, h: i32) -> (usize, usize) {
 
     for (_, v) in antennas {
         for pair in v.iter().permutations(2) {
-            let (dx, dy) = (pair[0].0 - pair[1].0, pair[0].1 - pair[1].1);
-            antinodes_part1(&pair, (dx, dy), w, h, &mut antinodes[0]);
-            antinodes_part2(*pair[0], (dx, dy), w, h, &mut antinodes[1]);
+            let delta = (pair[0].0 - pair[1].0, pair[0].1 - pair[1].1);
+            antinodes_part1(&pair, delta, w, h, &mut antinodes[0]);
+            antinodes_part2(*pair[0], delta, w, h, &mut antinodes[1]);
         }
     }
 
