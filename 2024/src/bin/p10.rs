@@ -22,7 +22,7 @@ fn main() -> Result<()> {
     let (grid, w, h) = parse()?;
 
     let trailheads: Vec<V> = iproduct!(0..w, 0..h)
-        .filter(|&(x, y)| grid[y as usize][x as usize] == 0)
+        .filter(|&(x, y)| grid.cell(x, y) == 0)
         .collect();
 
     let part1: usize = trailheads
@@ -78,7 +78,10 @@ fn parse() -> Result<(Grid, i32, i32)> {
     let mut grid = Grid::new();
 
     for line in io::stdin().lock().lines() {
-        let cells = line?.chars().map(|d| d.to_digit(10).unwrap() as i32).collect();
+        let cells: Vec<i32> = line?
+            .chars()
+            .map(|c| c.to_string().parse())
+            .collect::<Result<_, _>>()?;
         grid.push(cells);
     }
 
