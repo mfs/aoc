@@ -4,4 +4,5 @@
 - [2020](https://github.com/mfs/aoc-2020)
 - [2021](2021) (This repo)
 - [2022](2022) (This repo)
-
+- [2023](2023) (This repo)
+- [2024](2024) (This repo)
