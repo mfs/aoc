@@ -32,16 +32,17 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
 |:---|---:|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 3.0 ± 0.1 | 2.8 | 3.1 | 12.72 ± 2.81 |
-| `target/release/p02 < input/p02.txt` | 3.2 ± 0.9 | 1.5 | 3.9 | 13.46 ± 4.89 |
-| `target/release/p03 < input/p03.txt` | 4.4 ± 0.5 | 3.1 | 4.7 | 18.55 ± 4.52 |
-| `target/release/p04 < input/p04.txt` | 4.4 ± 0.4 | 3.6 | 4.9 | 18.77 ± 4.43 |
-| `target/release/p05 < input/p05.txt` | 29.1 ± 0.7 | 28.2 | 30.2 | 123.67 ± 27.10 |
-| `target/release/p06 < input/p06.txt` | 89.3 ± 5.6 | 85.2 | 99.9 | 379.21 ± 85.90 |
-| `target/release/p07 < input/p07.txt` | 47.9 ± 1.3 | 46.4 | 50.4 | 203.49 ± 44.65 |
-| `target/release/p08 < input/p08.txt` | 0.2 ± 0.1 | 0.2 | 0.3 | 1.00 |
-| `target/release/p09 < input/p09.txt` | 9.9 ± 0.1 | 9.7 | 10.0 | 41.87 ± 9.13 |
-| `target/release/p10 < input/p10.txt` | 0.7 ± 0.1 | 0.6 | 0.8 | 2.89 ± 0.67 |
+| `target/release/p01 < input/p01.txt` | 3.1 ± 0.1 | 2.9 | 3.2 | 8.87 ± 1.73 |
+| `target/release/p02 < input/p02.txt` | 3.8 ± 0.1 | 3.7 | 4.0 | 11.05 ± 2.15 |
+| `target/release/p03 < input/p03.txt` | 1.0 ± 0.3 | 0.9 | 1.8 | 3.01 ± 0.95 |
+| `target/release/p04 < input/p04.txt` | 0.8 ± 0.0 | 0.8 | 0.9 | 2.39 ± 0.48 |
+| `target/release/p05 < input/p05.txt` | 29.7 ± 0.6 | 28.7 | 30.7 | 85.46 ± 16.50 |
+| `target/release/p06 < input/p06.txt` | 86.9 ± 1.5 | 85.7 | 89.8 | 249.80 ± 48.17 |
+| `target/release/p07 < input/p07.txt` | 47.9 ± 1.8 | 45.6 | 51.1 | 137.78 ± 26.96 |
+| `target/release/p08 < input/p08.txt` | 0.3 ± 0.1 | 0.2 | 0.4 | 1.00 |
+| `target/release/p09 < input/p09.txt` | 10.0 ± 0.1 | 9.8 | 10.1 | 28.64 ± 5.51 |
+| `target/release/p10 < input/p10.txt` | 0.8 ± 0.0 | 0.7 | 0.9 | 2.35 ± 0.47 |
+| `target/release/p11 < input/p11.txt` | 10.2 ± 0.5 | 9.5 | 11.4 | 29.37 ± 5.85 |
 
 ## Lines of Code
 
@@ -56,5 +57,6 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 | Rust | src/bin/p07.rs | p07.rs | 100 | 74 | 6 | 20 | 19 | 2108 | 0 |
 | Rust | src/bin/p08.rs | p08.rs | 82 | 63 | 0 | 19 | 17 | 2088 | 0 |
 | Rust | src/bin/p09.rs | p09.rs | 118 | 85 | 5 | 28 | 22 | 2729 | 0 |
-| Rust | src/bin/p10.rs | p10.rs | 89 | 67 | 0 | 22 | 15 | 1987 | 0 |
+| Rust | src/bin/p10.rs | p10.rs | 92 | 70 | 0 | 22 | 15 | 2031 | 0 |
+| Rust | src/bin/p11.rs | p11.rs | 75 | 54 | 1 | 20 | 14 | 1394 | 0 |
 
