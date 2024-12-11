@@ -46,20 +46,11 @@ fn blink(n: u64, level: u32, cache: &mut Cache) -> u64 {
     count
 }
 
-fn digits(mut n: u64) -> u32 {
-    if n == 0 {
-        return 1;
+fn digits(n: u64) -> u32 {
+    match n {
+        0 => 1,
+        _ => n.ilog10() + 1,
     }
-
-    let mut count = 0;
-
-    while n != 0 {
-        n /= 10;
-
-        count += 1;
-    }
-
-    count
 }
 
 fn parse() -> Result<Vec<u64>> {
