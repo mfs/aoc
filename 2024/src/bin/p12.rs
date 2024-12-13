@@ -80,8 +80,7 @@ fn price_part2(regions: &Regions) -> i32 {
                 let ny = (sq.0, nd.1);
 
                 match (region.1.contains(&nd), region.1.contains(&nx), region.1.contains(&ny)) {
-                    (false, false, false) => perimeter += 1, // plain corner
-                    (true, false, false) => perimeter += 1, // corner with diagonal touching
+                    (_, false, false) => perimeter += 1, // outer corner
                     (false, true, true) => perimeter += 1, // inner corner
                     _ => {},
                 }
