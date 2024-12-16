@@ -72,7 +72,7 @@ fn part2(grid: &mut Grid, w: i32, h: i32, start: V, moves: &Vec<V>) -> i32 {
         // horizontal move, use part 1 trace
         if dir == (1, 0) || dir == (-1, 0) {
             let m = trace_grid(grid, robot, dir);
-            if m.len() > 0 {
+            if !m.is_empty() {
                 for w in m.windows(2) {
                     let new = w[0];
                     let old = w[1];
