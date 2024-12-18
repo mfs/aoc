@@ -57,8 +57,7 @@ fn bfs(corrupted: &HashSet<V>, start: V, end: V) -> (bool, i32) {
                 continue;
             }
 
-            if  !seen.contains(&np) && !corrupted.contains(&np) {
-                seen.insert(np);
+            if seen.insert(np) && !corrupted.contains(&np) {
                 queue.push_back((cost + 1, np));
             }
         }
