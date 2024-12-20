@@ -32,25 +32,26 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
 |:---|---:|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 2.0 ± 0.5 | 1.5 | 3.2 | 3.95 ± 1.29 |
-| `target/release/p02 < input/p02.txt` | 3.4 ± 1.3 | 1.7 | 4.9 | 6.56 ± 2.81 |
-| `target/release/p03 < input/p03.txt` | 4.5 ± 0.6 | 3.6 | 5.2 | 8.74 ± 2.15 |
-| `target/release/p04 < input/p04.txt` | 4.3 ± 1.1 | 2.4 | 5.6 | 8.25 ± 2.73 |
-| `target/release/p05 < input/p05.txt` | 31.3 ± 0.9 | 30.6 | 33.3 | 60.70 ± 12.68 |
-| `target/release/p06 < input/p06.txt` | 93.0 ± 4.1 | 88.1 | 99.0 | 180.24 ± 38.08 |
-| `target/release/p07 < input/p07.txt` | 49.7 ± 1.4 | 47.8 | 52.7 | 96.33 ± 20.10 |
-| `target/release/p08 < input/p08.txt` | 0.5 ± 0.1 | 0.4 | 0.7 | 1.00 |
-| `target/release/p09 < input/p09.txt` | 10.2 ± 0.1 | 10.1 | 10.4 | 19.82 ± 4.10 |
-| `target/release/p10 < input/p10.txt` | 1.1 ± 0.1 | 0.9 | 1.3 | 2.04 ± 0.46 |
-| `target/release/p11 < input/p11.txt` | 10.5 ± 0.5 | 9.8 | 11.5 | 20.28 ± 4.30 |
-| `target/release/p12 < input/p12.txt` | 7.2 ± 1.4 | 6.3 | 10.7 | 13.87 ± 3.92 |
-| `target/release/p13 < input/p13.txt` | 3.1 ± 0.2 | 2.9 | 3.4 | 5.98 ± 1.27 |
-| `target/release/p14 < input/p14.txt` | 25.3 ± 0.4 | 24.8 | 26.3 | 49.08 ± 10.18 |
-| `target/release/p15 < input/p15.txt` | 3.0 ± 0.8 | 2.1 | 5.0 | 5.91 ± 1.98 |
-| `target/release/p16 < input/p16.txt` | 33.8 ± 0.8 | 33.2 | 35.9 | 65.56 ± 13.64 |
-| `target/release/p17 < input/p17.txt` | 1.2 ± 0.2 | 1.0 | 1.7 | 2.31 ± 0.60 |
-| `target/release/p18 < input/p18.txt` | 3.3 ± 1.3 | 2.0 | 5.5 | 6.42 ± 2.83 |
-| `target/release/p19 < input/p19.txt` | 28.9 ± 0.2 | 28.7 | 29.3 | 55.93 ± 11.57 |
+| `target/release/p01 < input/p01.txt` | 0.7 ± 0.0 | 0.6 | 0.7 | 1.03 ± 0.11 |
+| `target/release/p02 < input/p02.txt` | 1.2 ± 0.4 | 0.8 | 1.8 | 1.85 ± 0.58 |
+| `target/release/p03 < input/p03.txt` | 2.5 ± 1.0 | 1.1 | 4.6 | 4.02 ± 1.65 |
+| `target/release/p04 < input/p04.txt` | 3.8 ± 1.3 | 1.4 | 5.0 | 6.01 ± 2.16 |
+| `target/release/p05 < input/p05.txt` | 30.2 ± 1.1 | 28.6 | 32.4 | 47.77 ± 4.43 |
+| `target/release/p06 < input/p06.txt` | 89.5 ± 4.2 | 85.6 | 96.0 | 141.60 ± 13.79 |
+| `target/release/p07 < input/p07.txt` | 48.5 ± 1.2 | 47.2 | 51.4 | 76.82 ± 6.84 |
+| `target/release/p08 < input/p08.txt` | 0.6 ± 0.1 | 0.5 | 0.7 | 1.00 |
+| `target/release/p09 < input/p09.txt` | 10.4 ± 0.1 | 10.2 | 10.5 | 16.39 ± 1.41 |
+| `target/release/p10 < input/p10.txt` | 2.3 ± 1.0 | 1.4 | 4.7 | 3.70 ± 1.64 |
+| `target/release/p11 < input/p11.txt` | 12.1 ± 1.8 | 10.4 | 15.8 | 19.13 ± 3.23 |
+| `target/release/p12 < input/p12.txt` | 10.0 ± 3.5 | 6.2 | 15.3 | 15.81 ± 5.72 |
+| `target/release/p13 < input/p13.txt` | 8.5 ± 1.6 | 5.9 | 10.5 | 13.42 ± 2.73 |
+| `target/release/p14 < input/p14.txt` | 24.6 ± 0.8 | 23.3 | 26.0 | 38.88 ± 3.53 |
+| `target/release/p15 < input/p15.txt` | 2.4 ± 0.2 | 2.2 | 2.8 | 3.82 ± 0.45 |
+| `target/release/p16 < input/p16.txt` | 32.8 ± 1.3 | 31.2 | 35.9 | 51.92 ± 4.89 |
+| `target/release/p17 < input/p17.txt` | 1.3 ± 0.1 | 1.2 | 1.5 | 2.07 ± 0.23 |
+| `target/release/p18 < input/p18.txt` | 2.5 ± 0.4 | 2.2 | 3.5 | 3.97 ± 0.78 |
+| `target/release/p19 < input/p19.txt` | 27.5 ± 0.7 | 27.0 | 29.0 | 43.57 ± 3.89 |
+| `target/release/p20 < input/p20.txt` | 124.3 ± 3.6 | 120.0 | 128.7 | 196.67 ± 17.72 |
 
 ## Lines of Code
 
@@ -75,4 +76,5 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 | Rust | src/bin/p17.rs | p17.rs | 136 | 101 | 11 | 24 | 19 | 3250 | 0 |
 | Rust | src/bin/p18.rs | p18.rs | 82 | 57 | 3 | 22 | 14 | 1974 | 0 |
 | Rust | src/bin/p19.rs | p19.rs | 76 | 58 | 0 | 18 | 16 | 1634 | 0 |
+| Rust | src/bin/p20.rs | p20.rs | 109 | 81 | 0 | 28 | 20 | 2259 | 0 |
 
