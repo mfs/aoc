@@ -2,6 +2,7 @@ use std::io::{self, BufRead};
 use std::collections::{HashMap,HashSet};
 
 use anyhow::Result;
+use rayon::prelude::*;
 
 type V = (i32, i32);
 type Grid = Vec<Vec<char>>;
@@ -20,11 +21,10 @@ fn main() -> Result<()> {
 }
 
 fn cheat(path: &Path, radius: i32) -> i32 {
-    let mut count = 0;
-
     let dia = diamond(radius);
 
-    for (pos, cost) in path {
+    path.par_iter().map(|(pos, cost)| {
+        let mut count = 0;
         for dst in &dia {
             let dst = (pos.0 + dst.0, pos.1 + dst.1);
             let md = (pos.0 - dst.0).abs() + (pos.1 - dst.1).abs();
@@ -32,9 +32,9 @@ fn cheat(path: &Path, radius: i32) -> i32 {
                 count += 1;
             }
         }
-    }
 
-    count
+        count
+    }).sum::<i32>()
 }
 
 fn diamond(radius: i32) -> HashSet<V> {
