@@ -7,7 +7,7 @@ type Network = HashMap<String, HashSet<String>>;
 type Nodes = HashSet<String>;
 
 fn main() -> Result<()> {
-    let (network, _) = parse()?;
+    let network = parse()?;
 
     println!("Part 1: {}", part1(&network));
 
@@ -77,21 +77,17 @@ fn bron_kerbosch(network: &Network, r: Nodes, p: &mut Nodes, x: &mut Nodes, max_
     }
 }
 
-fn parse() -> Result<(Network, Nodes)> {
+fn parse() -> Result<Network> {
     let mut network = Network::new();
-    let mut nodes = Nodes::new();
 
     for line in io::stdin().lock().lines() {
         let line = line?;
 
         let tokens: Vec<_> = line.split('-').collect();
 
-        nodes.insert(tokens[0].to_owned());
-        nodes.insert(tokens[1].to_owned());
-
         network.entry(tokens[0].to_owned()).or_default().insert(tokens[1].to_owned());
         network.entry(tokens[1].to_owned()).or_default().insert(tokens[0].to_owned());
     }
 
-    Ok((network, nodes))
+    Ok(network)
 }
