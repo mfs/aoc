@@ -29,6 +29,7 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 - [anyhow](https://crates.io/crates/anyhow)
 - [regex](https://crates.io/crates/regex)
 - [itertools](https://crates.io/crates/itertools)
+- [phf](https://crates.io/crates/phf) (perfect hash functions for static data)
 - [rayon](https://crates.io/crates/rayon) (using this for the first time this year. \`par_iter\` ftw!)
 - [num](https://crates.io/crates/num) (if big ints are required)
 - [rustworkx-core](https://crates.io/crates/rustworkx-core) (used once last year)

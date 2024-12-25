@@ -24,6 +24,7 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 - [anyhow](https://crates.io/crates/anyhow)
 - [regex](https://crates.io/crates/regex)
 - [itertools](https://crates.io/crates/itertools)
+- [phf](https://crates.io/crates/phf) (perfect hash functions for static data)
 - [rayon](https://crates.io/crates/rayon) (using this for the first time this year. `par_iter` ftw!)
 - [num](https://crates.io/crates/num) (if big ints are required)
 - [rustworkx-core](https://crates.io/crates/rustworkx-core) (used once last year)
@@ -32,29 +33,31 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
 |:---|---:|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 3.5 ± 0.1 | 3.3 | 3.6 | 12.83 ± 1.76 |
-| `target/release/p02 < input/p02.txt` | 4.0 ± 0.7 | 2.1 | 4.5 | 14.84 ± 3.33 |
-| `target/release/p03 < input/p03.txt` | 3.9 ± 1.0 | 2.1 | 5.1 | 14.50 ± 4.23 |
-| `target/release/p04 < input/p04.txt` | 4.9 ± 0.2 | 4.4 | 5.2 | 17.98 ± 2.52 |
-| `target/release/p05 < input/p05.txt` | 30.9 ± 0.4 | 30.4 | 31.6 | 113.88 ± 15.28 |
-| `target/release/p06 < input/p06.txt` | 88.0 ± 1.2 | 86.6 | 90.0 | 324.67 ± 43.55 |
-| `target/release/p07 < input/p07.txt` | 49.3 ± 1.8 | 47.5 | 52.8 | 181.85 ± 25.15 |
-| `target/release/p08 < input/p08.txt` | 0.3 ± 0.0 | 0.2 | 0.3 | 1.00 |
-| `target/release/p09 < input/p09.txt` | 10.0 ± 0.1 | 9.8 | 10.1 | 36.75 ± 4.91 |
-| `target/release/p10 < input/p10.txt` | 0.8 ± 0.1 | 0.7 | 0.9 | 2.92 ± 0.44 |
-| `target/release/p11 < input/p11.txt` | 9.5 ± 0.2 | 9.3 | 9.7 | 34.93 ± 4.69 |
-| `target/release/p12 < input/p12.txt` | 6.1 ± 0.1 | 5.9 | 6.3 | 22.56 ± 3.03 |
-| `target/release/p13 < input/p13.txt` | 2.7 ± 0.1 | 2.6 | 3.0 | 9.95 ± 1.40 |
-| `target/release/p14 < input/p14.txt` | 24.7 ± 0.4 | 24.4 | 25.7 | 91.19 ± 12.25 |
-| `target/release/p15 < input/p15.txt` | 2.1 ± 0.3 | 1.9 | 2.9 | 7.61 ± 1.45 |
-| `target/release/p16 < input/p16.txt` | 33.5 ± 0.9 | 32.3 | 35.5 | 123.65 ± 16.82 |
-| `target/release/p17 < input/p17.txt` | 1.1 ± 0.3 | 0.8 | 1.7 | 4.22 ± 1.33 |
-| `target/release/p18 < input/p18.txt` | 2.8 ± 1.4 | 1.8 | 5.6 | 10.43 ± 5.44 |
-| `target/release/p19 < input/p19.txt` | 28.6 ± 0.3 | 28.4 | 29.4 | 105.48 ± 14.12 |
-| `target/release/p20 < input/p20.txt` | 17.4 ± 1.4 | 16.4 | 20.5 | 64.03 ± 10.05 |
-| `target/release/p21 < input/p21.txt` | 2.1 ± 0.2 | 1.9 | 2.5 | 7.73 ± 1.31 |
-| `target/release/p22 < input/p22.txt` | 189.5 ± 1.9 | 187.8 | 194.2 | 699.20 ± 93.56 |
-| `target/release/p23 < input/p23.txt` | 231.9 ± 2.2 | 228.8 | 235.2 | 855.82 ± 114.48 |
+| `target/release/p01 < input/p01.txt` | 2.7 ± 0.1 | 2.5 | 3.0 | 112.19 ± 161.40 |
+| `target/release/p02 < input/p02.txt` | 2.7 ± 1.3 | 0.9 | 4.3 | 112.21 ± 169.77 |
+| `target/release/p03 < input/p03.txt` | 4.6 ± 0.3 | 4.1 | 5.1 | 188.42 ± 271.26 |
+| `target/release/p04 < input/p04.txt` | 4.2 ± 0.1 | 4.1 | 4.4 | 172.67 ± 248.30 |
+| `target/release/p05 < input/p05.txt` | 28.5 ± 0.7 | 27.9 | 30.1 | 1170.27 ± 1682.97 |
+| `target/release/p06 < input/p06.txt` | 86.4 ± 1.4 | 85.0 | 88.1 | 3547.48 ± 5101.25 |
+| `target/release/p07 < input/p07.txt` | 47.7 ± 2.0 | 45.5 | 52.1 | 1960.42 ± 2820.04 |
+| `target/release/p08 < input/p08.txt` | 0.0 ± 0.0 | 0.0 | 0.1 | 1.00 |
+| `target/release/p09 < input/p09.txt` | 9.5 ± 0.3 | 9.1 | 10.0 | 390.54 ± 561.69 |
+| `target/release/p10 < input/p10.txt` | 3.4 ± 0.6 | 2.4 | 4.3 | 139.05 ± 201.36 |
+| `target/release/p11 < input/p11.txt` | 9.4 ± 1.2 | 8.5 | 12.3 | 387.52 ± 559.38 |
+| `target/release/p12 < input/p12.txt` | 6.4 ± 0.8 | 5.8 | 8.6 | 263.03 ± 379.80 |
+| `target/release/p13 < input/p13.txt` | 2.4 ± 0.0 | 2.3 | 2.4 | 97.03 ± 139.54 |
+| `target/release/p14 < input/p14.txt` | 24.5 ± 1.0 | 23.2 | 26.6 | 1004.05 ± 1444.28 |
+| `target/release/p15 < input/p15.txt` | 1.7 ± 0.1 | 1.6 | 1.8 | 69.31 ± 99.68 |
+| `target/release/p16 < input/p16.txt` | 32.4 ± 0.8 | 30.6 | 33.7 | 1331.90 ± 1915.46 |
+| `target/release/p17 < input/p17.txt` | 0.7 ± 0.1 | 0.6 | 0.9 | 28.81 ± 41.56 |
+| `target/release/p18 < input/p18.txt` | 1.6 ± 0.1 | 1.5 | 1.8 | 65.23 ± 93.85 |
+| `target/release/p19 < input/p19.txt` | 26.9 ± 0.7 | 26.0 | 28.5 | 1106.02 ± 1590.64 |
+| `target/release/p20 < input/p20.txt` | 16.4 ± 0.5 | 16.0 | 17.5 | 675.01 ± 970.87 |
+| `target/release/p21 < input/p21.txt` | 1.6 ± 0.0 | 1.5 | 1.6 | 64.07 ± 92.13 |
+| `target/release/p22 < input/p22.txt` | 177.1 ± 2.2 | 174.5 | 181.7 | 7271.66 ± 10456.36 |
+| `target/release/p23 < input/p23.txt` | 217.5 ± 7.9 | 213.4 | 239.4 | 8929.86 ± 12844.36 |
+| `target/release/p24 < input/p24.txt` | 0.3 ± 0.1 | 0.2 | 0.7 | 13.34 ± 20.04 |
+| `target/release/p25 < input/p25.txt` | 2.8 ± 0.7 | 1.4 | 3.6 | 113.15 ± 165.36 |
 
 ## Lines of Code
 
@@ -82,5 +85,7 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 | Rust | src/bin/p20.rs | p20.rs | 109 | 82 | 0 | 27 | 19 | 2313 | 0 |
 | Rust | src/bin/p21.rs | p21.rs | 109 | 80 | 3 | 26 | 13 | 2980 | 0 |
 | Rust | src/bin/p22.rs | p22.rs | 71 | 49 | 1 | 21 | 6 | 1540 | 0 |
-| Rust | src/bin/p23.rs | p23.rs | 97 | 67 | 2 | 28 | 11 | 2514 | 0 |
+| Rust | src/bin/p23.rs | p23.rs | 93 | 64 | 2 | 27 | 11 | 2368 | 0 |
+| Rust | src/bin/p24.rs | p24.rs | 162 | 129 | 6 | 27 | 34 | 4842 | 0 |
+| Rust | src/bin/p25.rs | p25.rs | 54 | 39 | 0 | 15 | 10 | 1089 | 0 |
 
