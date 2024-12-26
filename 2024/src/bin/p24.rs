@@ -12,12 +12,11 @@ enum Gate {
 }
 use std::collections::HashSet;
 type Gates = HashMap<String, Gate>;
-type HS = HashSet<String>;
 
 fn main() -> Result<()> {
     let gates = parse()?;
 
-    println!("Part 1: {}", bus(&gates, 'z', &mut HS::new()));
+    println!("Part 1: {}", bus(&gates, 'z'));
     println!("Part 2: {}", part2(&gates));
 
     println!();
@@ -86,7 +85,7 @@ fn part2(gates: &Gates) -> String {
 }
 
 fn gprint(gates: &Gates, g: &str, level: usize) {
-    let spc = "                      ";
+    let spc = " ".repeat(100);
     match &gates[g] {
         Gate::In(_) => println!("{}{}", &spc[..level],  g),
         Gate::And(a, b) => {
@@ -107,31 +106,25 @@ fn gprint(gates: &Gates, g: &str, level: usize) {
     }
 }
 
-fn bus(gates: &Gates, c: char, store: &mut HS) -> u64 {
+fn bus(gates: &Gates, c: char) -> u64 {
     let mut n = 0;
-    for (g, _) in gates {
+    for g in gates.keys() {
         if g.starts_with(c) {
             let bit = g[1..].parse::<u32>().unwrap();
-            n |= (eval(&gates, &g, store) as u64) << bit;
+            n |= (eval(&gates, &g) as u64) << bit;
         }
     }
 
     n
 }
 
-fn eval(gates: &Gates, output: &str, store: &mut HS) -> u8 {
-    let z = match &gates[output] {
+fn eval(gates: &Gates, output: &str) -> u8 {
+    match &gates[output] {
         Gate::In(x) => *x,
-        Gate::And(a, b) => eval(gates, &a, store) & eval(gates, &b, store),
-        Gate::Or(a, b) => eval(gates, &a, store) | eval(gates, &b, store),
-        Gate::Xor(a, b) => eval(gates, &a, store) ^ eval(gates, &b, store),
-    };
-
-    if z == 1 && !output.starts_with("x") && !output.starts_with("y") {
-        store.insert(output.to_owned());
+        Gate::And(a, b) => eval(gates, &a) & eval(gates, &b),
+        Gate::Or(a, b) => eval(gates, &a) | eval(gates, &b),
+        Gate::Xor(a, b) => eval(gates, &a) ^ eval(gates, &b),
     }
-
-    return z;
 }
 
 fn parse() -> Result<HashMap<String, Gate>> {
