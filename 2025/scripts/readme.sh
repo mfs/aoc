@@ -42,7 +42,7 @@ TARGETS=$(basename -a target/release/p??)
 DAYS=${TARGETS//$'\n'/,}
 
 hyperfine -u millisecond -w 3 -r 10 -L day ${DAYS} "target/release/{day} < input/{day}.txt" --export-markdown hf.md
-cat hf.md >> README.md
+cat hf.md | sed 's/[^|]*|$//g' >> README.md
 rm hf.md
 echo >> README.md
 

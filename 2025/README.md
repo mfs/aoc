@@ -30,10 +30,10 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 ## Benchmarks
 
-| Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
-|:---|---:|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 7.7 ± 1.7 | 4.8 | 10.2 | 1.00 |
-| `target/release/p02 < input/p02.txt` | 160.6 ± 1.1 | 159.6 | 162.7 | 20.75 ± 4.59 |
+| Command | Mean [ms] | Min [ms] | Max [ms] |
+|:---|---:|---:|---:|
+| `target/release/p01 < input/p01.txt` | 6.6 ± 1.0 | 4.6 | 7.8 |
+| `target/release/p02 < input/p02.txt` | 161.2 ± 1.5 | 159.1 | 164.3 |
 
 ## Lines of Code
 
