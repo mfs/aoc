@@ -1,8 +1,7 @@
 # Advent of Code 2025
 
 These are my solutions for the 2025 Advent of Code (AoC). They are written in Rust. Goals are
-readable code, clean algorithms and decent runtimes. Am sub 100ms for all problems so far.
-This probably will not continue...
+readable code, clean algorithms and decent runtimes.
 
 ## Hardware
 
@@ -33,11 +32,13 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
 |:---|---:|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 5.3 ± 2.3 | 2.8 | 9.8 | 1.00 |
+| `target/release/p01 < input/p01.txt` | 7.7 ± 1.7 | 4.8 | 10.2 | 1.00 |
+| `target/release/p02 < input/p02.txt` | 160.6 ± 1.1 | 159.6 | 162.7 | 20.75 ± 4.59 |
 
 ## Lines of Code
 
 | Language | Provider | Filename | Lines | Code | Comments | Blanks | Complexity | Bytes | ULOC |
 | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Rust | src/bin/p01.rs | p01.rs | 50 | 38 | 0 | 12 | 8 | 1100 | 0 |
+| Rust | src/bin/p02.rs | p02.rs | 75 | 55 | 0 | 20 | 12 | 1481 | 0 |
 

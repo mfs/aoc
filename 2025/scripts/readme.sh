@@ -6,8 +6,7 @@ cat > README.md <<EOF
 # Advent of Code 2025
 
 These are my solutions for the 2025 Advent of Code (AoC). They are written in Rust. Goals are
-readable code, clean algorithms and decent runtimes. Am sub 100ms for all problems so far.
-This probably will not continue...
+readable code, clean algorithms and decent runtimes.
 
 ## Hardware
 
