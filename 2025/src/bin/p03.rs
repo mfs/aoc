@@ -52,7 +52,7 @@ fn parse() -> Result<Vec<Vec<u32>>> {
 
     for line in io::stdin().lock().lines() {
         let line = line?;
-        banks.push(line.chars().map(|c| c.to_digit(10).unwrap()).collect());
+        banks.push(line.chars().map(|c| c.to_digit(10).context("invalid digit")).collect::<Result<_, _>>()?);
     }
 
     Ok(banks)
