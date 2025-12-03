@@ -1,29 +1,31 @@
 use std::io::{self, Read};
+use std::sync::atomic::{AtomicU64, Ordering};
 
 use anyhow::Result;
+use rayon::prelude::*;
 
 fn main() -> Result<()> {
     let ranges = parse()?;
 
-    let mut total_part1 = 0;
-    let mut total_part2 = 0;
+    let total_part1 = AtomicU64::new(0);
+    let total_part2 = AtomicU64::new(0);
 
-    for range in &ranges {
+    ranges.par_iter().for_each( |range| {
         for n in range.0..=range.1 {
             let digits = n.ilog10() + 1;
 
             if part1_is_invalid(n, digits) {
-                total_part1 += n;
+                total_part1.fetch_add(n, Ordering::SeqCst);
             }
 
             if part2_is_invalid(n, digits) {
-                total_part2 += n;
+                total_part2.fetch_add(n, Ordering::SeqCst);
             }
         }
-    }
+    });
 
-    println!("Part 1: {}", total_part1);
-    println!("Part 2: {}", total_part2);
+    println!("Part 1: {}", total_part1.into_inner());
+    println!("Part 2: {}", total_part2.into_inner());
 
     Ok(())
 }

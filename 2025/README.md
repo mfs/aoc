@@ -32,15 +32,15 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Command | Mean [ms] | Min [ms] | Max [ms] |
 |:---|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 8.1 ± 1.8 | 4.0 | 9.9 |
-| `target/release/p02 < input/p02.txt` | 159.8 ± 0.5 | 159.0 | 160.6 |
-| `target/release/p03 < input/p03.txt` | 0.2 ± 0.0 | 0.1 | 0.2 |
+| `target/release/p01 < input/p01.txt` | 7.2 ± 3.0 | 2.9 | 11.0 |
+| `target/release/p02 < input/p02.txt` | 55.3 ± 6.1 | 46.5 | 69.3 |
+| `target/release/p03 < input/p03.txt` | 0.5 ± 0.1 | 0.4 | 0.6 |
 
 ## Lines of Code
 
 | Language | Provider | Filename | Lines | Code | Comments | Blanks | Complexity | Bytes | ULOC |
 | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Rust | src/bin/p01.rs | p01.rs | 50 | 38 | 0 | 12 | 8 | 1100 | 0 |
-| Rust | src/bin/p02.rs | p02.rs | 75 | 55 | 0 | 20 | 12 | 1481 | 0 |
-| Rust | src/bin/p03.rs | p03.rs | 59 | 43 | 1 | 15 | 5 | 1354 | 0 |
+| Rust | src/bin/p02.rs | p02.rs | 77 | 57 | 0 | 20 | 11 | 1669 | 0 |
+| Rust | src/bin/p03.rs | p03.rs | 59 | 43 | 1 | 15 | 5 | 1387 | 0 |
 
