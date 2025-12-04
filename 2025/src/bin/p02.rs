@@ -1,3 +1,4 @@
+use std::collections::VecDeque;
 use std::io::{self, Read};
 use std::sync::atomic::{AtomicU64, Ordering};
 
@@ -36,9 +37,11 @@ fn part1_is_invalid(n: u64, digits: u32) -> bool {
     n / d == n % d
 }
 
-fn part2_is_invalid(n: u64, digits: u32) -> bool {
-    for len in (1..=digits/2).filter(|x| digits % x == 0) {
-        if seq(n, len).windows(2).all(|x| x[0] == x[1]) {
+fn part2_is_invalid(n: u64, digits_num: u32) -> bool {
+    let d = digits(n);
+
+    for len in (1..=digits_num/2).filter(|x| digits_num % x == 0) {
+        if d[..len as usize].iter().cycle().zip(&d).all(|(a, b)| a == b) {
             return true;
         }
     }
@@ -46,16 +49,15 @@ fn part2_is_invalid(n: u64, digits: u32) -> bool {
     false
 }
 
-fn seq(mut n: u64, size: u32) -> Vec<u64> {
-    let mut v = vec![];
-    let pow = 10u64.pow(size);
+fn digits(mut n: u64) -> Vec<u8> {
+    let mut d = VecDeque::with_capacity(16);
 
     while n != 0 {
-        v.push(n % pow);
-        n /= pow;
+        d.push_front((n % 10) as u8);
+        n /= 10;
     }
 
-    v
+    Vec::from(d)
 }
 
 fn parse() -> Result<Vec<(u64, u64)>> {
