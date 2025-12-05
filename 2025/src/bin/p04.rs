@@ -49,16 +49,15 @@ fn remove_rolls(grid: &mut Vec<Vec<char>>) -> usize {
     remove.len()
 }
 
-const NEIGHBOURS: [(i32, i32); 8] = [
+const NEIGHBOURS: [(isize, isize); 8] = [
     (-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1),
 ];
 
 fn neighbours(x: usize, y: usize, w: usize, h: usize) -> Vec<(usize, usize)> {
     NEIGHBOURS
         .iter()
-        .map(|(dx, dy)| (x as i32 + dx, y as i32 + dy))
-        .filter(|&(nx, ny)| nx >= 0 && nx < w as i32 && ny >= 0 && ny < h as i32)
-        .map(|(nx, ny)| (nx as usize, ny as usize))
+        .map(|&(dx, dy)| (x.wrapping_add_signed(dx), y.wrapping_add_signed(dy)))
+        .filter(|&(nx, ny)| nx < w && ny < h)
         .collect()
 }
 
