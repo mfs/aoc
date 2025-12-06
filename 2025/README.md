@@ -32,11 +32,12 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Command | Mean [ms] | Min [ms] | Max [ms] |
 |:---|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 7.6 ± 2.4 | 4.3 | 10.3 |
-| `target/release/p02 < input/p02.txt` | 16.6 ± 2.3 | 14.2 | 20.5 |
-| `target/release/p03 < input/p03.txt` | 0.4 ± 0.1 | 0.3 | 0.6 |
-| `target/release/p04 < input/p04.txt` | 17.1 ± 0.4 | 16.6 | 17.5 |
-| `target/release/p05 < input/p05.txt` | 0.3 ± 0.0 | 0.2 | 0.4 |
+| `target/release/p01 < input/p01.txt` | 7.1 ± 3.4 | 2.4 | 10.9 |
+| `target/release/p02 < input/p02.txt` | 16.7 ± 2.1 | 12.9 | 19.9 |
+| `target/release/p03 < input/p03.txt` | 0.1 ± 0.0 | 0.0 | 0.1 |
+| `target/release/p04 < input/p04.txt` | 17.5 ± 0.3 | 17.2 | 18.0 |
+| `target/release/p05 < input/p05.txt` | 0.0 ± 0.0 | 0.0 | 0.1 |
+| `target/release/p06 < input/p06.txt` | 0.6 ± 0.6 | 0.0 | 1.7 |
 
 ## Lines of Code
 
@@ -47,4 +48,5 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 | Rust | src/bin/p03.rs | p03.rs | 59 | 43 | 1 | 15 | 5 | 1387 | 0 |
 | Rust | src/bin/p04.rs | p04.rs | 73 | 54 | 0 | 19 | 10 | 1528 | 0 |
 | Rust | src/bin/p05.rs | p05.rs | 62 | 44 | 4 | 14 | 11 | 1504 | 0 |
+| Rust | src/bin/p06.rs | p06.rs | 77 | 54 | 5 | 18 | 11 | 1991 | 0 |
 
