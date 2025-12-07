@@ -6,14 +6,12 @@ use anyhow::{anyhow, Result};
 
 fn main() -> Result<()> {
     let (grid, start) = parse()?;
-    let w = grid[0].len();
-    let h = grid.len();
 
     let mut beams = HashMap::from([(start.0, 1)]); // initial beam
 
     let mut splitters_seen = BTreeSet::new();
 
-    for y in 0..h {
+    for y in 0..grid.len() {
         let mut next_beams = HashMap::new();
 
         for (x, beam_count) in beams {
@@ -22,12 +20,8 @@ fn main() -> Result<()> {
                 splitters_seen.insert((x, y));
 
                 // split beam
-                if x > 0 {
-                    *next_beams.entry(x - 1).or_insert(0) += beam_count;
-                }
-                if x < w-1 {
-                    *next_beams.entry(x + 1).or_insert(0) += beam_count;
-                }
+                *next_beams.entry(x - 1).or_insert(0) += beam_count;
+                *next_beams.entry(x + 1).or_insert(0) += beam_count;
             } else {
                 // fall through
                 *next_beams.entry(x).or_insert(0) += beam_count;
