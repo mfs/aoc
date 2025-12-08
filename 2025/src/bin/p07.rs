@@ -39,7 +39,7 @@ fn main() -> Result<()> {
 
 fn parse() -> Result<(Vec<Vec<char>>, (usize, usize))> {
     let mut grid = vec![];
-    let mut start = None; (0, 0);
+    let mut start = None;
 
     for (y, line) in io::stdin().lock().lines().enumerate() {
         let line = line?;
