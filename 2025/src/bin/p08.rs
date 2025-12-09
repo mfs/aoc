@@ -1,10 +1,10 @@
 use std::io::{self, BufRead};
-use std::collections::{HashMap};
 use std::cmp::Reverse;
 
 use anyhow::Result;
 
 type JuncBox = (i64, i64, i64);
+type DSP = Vec<usize>; // Disjoint Set Parents
 
 fn main() -> Result<()> {
     let boxes = parse()?;
@@ -24,23 +24,19 @@ fn main() -> Result<()> {
     distances.sort_unstable();
 
     // https://en.wikipedia.org/wiki/Disjoint-set_data_structure
-    // could probably just use a Vec here for performance
-    let mut disjoint_set = HashMap::new();
-    for i in 0..boxes.len() {
-        disjoint_set.insert(i, i);
-    }
+    let mut parent: DSP = (0..boxes.len()).collect();
 
     let mut connections = 0;
 
     for (idx, (_, idx0, idx1)) in distances.iter().enumerate() {
         if idx == 1000 {
-            let s = sizes(&mut disjoint_set);
+            let s = sizes(&mut parent);
             println!("Part 1: {}", s[0] * s[1] * s[2]);
         }
 
-        if find(*idx0, &mut disjoint_set) != find(*idx1, &mut disjoint_set) {
+        if find(*idx0, &mut parent) != find(*idx1, &mut parent) {
             // different roots so different sets
-            union(*idx0, *idx1, &mut disjoint_set);
+            union(*idx0, *idx1, &mut parent);
             connections += 1;
             if connections == boxes.len() - 1 {
                 println!("Part 2: {}", boxes[*idx0].0 * boxes[*idx1].0);
@@ -53,36 +49,34 @@ fn main() -> Result<()> {
 }
 
 // returns the root of the set using path compression
-fn find(x: usize, disjoint_set: &mut HashMap<usize, usize>) -> usize {
-    if disjoint_set[&x] != x {
-        let tmp = find(disjoint_set[&x], disjoint_set);
-        disjoint_set.insert(x, tmp);
-        return disjoint_set[&x];
+fn find(x: usize, parent: &mut DSP) -> usize {
+    if parent[x] != x {
+        let tmp = find(parent[x], parent);
+        parent[x] = tmp;
+        return parent[x];
     } else {
         return x;
     }
 }
 
 // joins two sets by finding the roots and making one the root of the other
-fn union(x: usize, y: usize, disjoint_set: &mut HashMap<usize, usize>) {
-    let x = find(x, disjoint_set);
-    let y = find(y, disjoint_set);
+fn union(x: usize, y: usize, parent: &mut DSP) {
+    let y = find(y, parent);
 
-    disjoint_set.insert(y, x);
+    parent[y] = find(x, parent);
 }
 
 // returns sizes of sets sorted in reverse order
-fn sizes(disjoint_set: &mut HashMap<usize, usize>) -> Vec<usize> {
-    let mut sizes = HashMap::new();
+fn sizes(parent: &mut DSP) -> Vec<usize> {
+    let mut sizes = vec![0; parent.len()];
 
-    for i in 0..disjoint_set.len() {
-        *sizes.entry(find(i, disjoint_set)).or_insert(0) += 1;
+    for i in 0..sizes.len() {
+        sizes[find(i, parent)] += 1;
     }
 
-    let mut sv: Vec<_> = sizes.into_values().collect();
-    sv.sort_by_key(|x| Reverse(*x));
+    sizes.sort_by_key(|x| Reverse(*x));
 
-    sv
+    sizes
 }
 
 fn dist2(a: JuncBox, b: JuncBox) -> i64 {
