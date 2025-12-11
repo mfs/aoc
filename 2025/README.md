@@ -48,15 +48,6 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Language | Provider | Filename | Lines | Code | Comments | Blanks | Complexity | Bytes | ULOC |
 | :--- | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Rust | target/release/build/highs-sys-988c7919d4c66132/out/c_bindings.rs | c_bindings.rs | 2066 | 2064 | 1 | 1 | 0 | 136494 | 0 |
-| Rust | target/debug/build/highs-sys-219d6521038a7a5e/out/c_bindings.rs | c_bindings.rs | 2066 | 2064 | 1 | 1 | 0 | 136494 | 0 |
-| Rust | target/debug/build/highs-sys-5deba722494e6630/out/c_bindings.rs | c_bindings.rs | 2066 | 2064 | 1 | 1 | 0 | 136494 | 0 |
-| Rust | target/release/build/clang-sys-cf2c84d6524b2037/out/common.rs | common.rs | 355 | 232 | 80 | 43 | 37 | 13746 | 0 |
-| Rust | target/debug/build/clang-sys-74128bf577510b94/out/common.rs | common.rs | 355 | 232 | 80 | 43 | 37 | 13746 | 0 |
-| Rust | target/debug/build/clang-sys-74128bf577510b94/out/dynamic.rs | dynamic.rs | 276 | 177 | 58 | 41 | 51 | 9945 | 0 |
-| Rust | target/release/build/clang-sys-cf2c84d6524b2037/out/dynamic.rs | dynamic.rs | 276 | 177 | 58 | 41 | 51 | 9945 | 0 |
-| Rust | target/release/build/clang-sys-cf2c84d6524b2037/out/macros.rs | macros.rs | 49 | 43 | 1 | 5 | 17 | 1429 | 0 |
-| Rust | target/debug/build/clang-sys-74128bf577510b94/out/macros.rs | macros.rs | 49 | 43 | 1 | 5 | 17 | 1429 | 0 |
 | Rust | src/bin/p01.rs | p01.rs | 50 | 38 | 0 | 12 | 8 | 1100 | 0 |
 | Rust | src/bin/p02.rs | p02.rs | 79 | 58 | 0 | 21 | 11 | 1758 | 0 |
 | Rust | src/bin/p03.rs | p03.rs | 59 | 43 | 1 | 15 | 5 | 1387 | 0 |
