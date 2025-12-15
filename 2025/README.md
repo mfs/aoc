@@ -32,17 +32,18 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 
 | Command | Mean [ms] | Min [ms] | Max [ms] |
 |:---|---:|---:|---:|
-| `target/release/p01 < input/p01.txt` | 5.8 ± 1.7 | 3.1 | 7.9 |
-| `target/release/p02 < input/p02.txt` | 16.8 ± 2.7 | 14.0 | 21.6 |
-| `target/release/p03 < input/p03.txt` | 0.9 ± 0.2 | 0.7 | 1.4 |
-| `target/release/p04 < input/p04.txt` | 18.2 ± 0.2 | 17.9 | 18.6 |
-| `target/release/p05 < input/p05.txt` | 0.8 ± 0.1 | 0.7 | 0.9 |
-| `target/release/p06 < input/p06.txt` | 2.2 ± 0.9 | 1.2 | 3.7 |
-| `target/release/p07 < input/p07.txt` | 4.6 ± 0.1 | 4.4 | 4.7 |
-| `target/release/p08 < input/p08.txt` | 20.6 ± 0.4 | 20.0 | 21.5 |
-| `target/release/p09 < input/p09.txt` | 24.2 ± 0.4 | 23.5 | 24.7 |
-| `target/release/p10 < input/p10.txt` | 277.0 ± 2.4 | 275.5 | 283.3 |
-| `target/release/p11 < input/p11.txt` | 1.0 ± 0.1 | 0.9 | 1.1 |
+| `target/release/p01 < input/p01.txt` | 6.8 ± 1.7 | 4.9 | 8.9 |
+| `target/release/p02 < input/p02.txt` | 16.5 ± 2.3 | 13.6 | 20.2 |
+| `target/release/p03 < input/p03.txt` | 0.3 ± 0.0 | 0.2 | 0.3 |
+| `target/release/p04 < input/p04.txt` | 15.9 ± 0.3 | 15.5 | 16.7 |
+| `target/release/p05 < input/p05.txt` | 0.9 ± 0.9 | 0.1 | 2.9 |
+| `target/release/p06 < input/p06.txt` | 2.3 ± 0.6 | 1.1 | 2.9 |
+| `target/release/p07 < input/p07.txt` | 3.8 ± 0.1 | 3.6 | 3.9 |
+| `target/release/p08 < input/p08.txt` | 18.8 ± 0.4 | 18.1 | 19.5 |
+| `target/release/p09 < input/p09.txt` | 21.5 ± 0.4 | 21.1 | 22.6 |
+| `target/release/p10 < input/p10.txt` | 252.4 ± 7.8 | 246.3 | 273.1 |
+| `target/release/p11 < input/p11.txt` | 0.5 ± 0.1 | 0.4 | 0.6 |
+| `target/release/p12 < input/p12.txt` | 0.3 ± 0.1 | 0.2 | 0.4 |
 
 ## Lines of Code
 
@@ -59,4 +60,5 @@ I tend to rely on minimal external libraries though do have a few standard ones 
 | Rust | src/bin/p09.rs | p09.rs | 89 | 64 | 5 | 20 | 22 | 2419 | 0 |
 | Rust | src/bin/p10.rs | p10.rs | 151 | 105 | 11 | 35 | 22 | 3753 | 0 |
 | Rust | src/bin/p11.rs | p11.rs | 77 | 55 | 0 | 22 | 18 | 1711 | 0 |
+| Rust | src/bin/p12.rs | p12.rs | 61 | 48 | 0 | 13 | 9 | 1366 | 0 |
 
